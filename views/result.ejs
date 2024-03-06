@@ -1,0 +1,32 @@
+<%- include("partials/header.ejs") %>
+
+	<h2>Your score: <%= score %> / <%= quizList.length %></h2>
+
+	<form action="/">
+		<h3>Would you like to give another go?</h3>
+		<input type="submit" value="Try again">
+	</form>
+	
+	<h3>Detail result: </h3>
+	<% quizList.forEach((quiz) => { %>
+		<div>
+			<hr>
+			<h4><%= quiz.id %>. <%= quiz.question %></h4>
+			<% quiz.choices.forEach((choice) => { %>
+				<p <% if (choice == quiz.answer) { %>
+						class="answer"
+					<% } else if (quiz.isCorrect == false && choice == quiz.userAnswer) { %>
+						class="wrong"
+					<% } %> >
+
+					<%= choice %>
+				</p>
+			<% }) %>
+		</div>
+	<% }) %>
+
+<%- include("partials/footer.ejs") %>
+
+<script>
+
+</script>

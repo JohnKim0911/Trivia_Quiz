@@ -1,0 +1,11 @@
+label {
+    cursor: pointer;
+}
+
+.answer {
+    color: green;
+}
+
+.wrong {
+    color: red;
+}

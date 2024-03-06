@@ -1,0 +1,35 @@
+<%- include("partials/header.ejs") %>
+
+<form action="/quiz">
+	<h2><%= quiz.id %>. <%= quiz.question %></h2>
+
+	<% quiz.choices.forEach((choice) => { %>
+		<p <% if (choice == quiz.answer) { %>
+				class="answer"
+			<% } else if (locals.userAnswer && choice == userAnswer) { %>
+				class="wrong"
+			<% } %> >
+
+			<%= choice %>
+		</p>
+	<% }) %>
+
+	<% if (isCorrect) { %>
+		<h2>You've got the right answer! 😁</h2>
+	<% } else { %>
+		<h2>Sorry. Wrong answer; 😓</h2>
+	<% } %>
+
+	<br>
+	<input type="submit" value="Next">
+</form>
+
+<div>
+	<p>- <%= quiz.id %> out of <%= quizLength %> quizzes - </p>
+</div>
+
+<%- include("partials/footer.ejs") %>
+
+<script>
+
+</script>

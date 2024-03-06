@@ -1,0 +1,25 @@
+<%- include("partials/header.ejs") %>
+
+<form action="/answer" method="post">
+	<h2><%= quiz.id %>. <%= quiz.question %></h2>
+
+	<% var num = 0; %>
+	<% quiz.choices.forEach((choice) => { %>
+		<% num++; %>
+		<input type="radio" id="<%= `choice${num}` %>" name="choice" value="<%= choice %>">
+		<label for="<%= `choice${num}` %>"><%= choice %></label><br>
+	<% })%>
+
+	<br>
+	<input type="submit" value="Check">
+</form>
+
+<div>
+	<p>- <%= quiz.id %> out of <%= quizLength %> quizzes - </p>
+</div>
+
+<%- include("partials/footer.ejs") %>
+
+<script>
+
+</script>
