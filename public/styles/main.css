@@ -3,9 +3,11 @@ label {
 }
 
 .answer {
-    color: green;
+    background-color: green;
+    color: white;
 }
 
 .wrong {
-    color: red;
+    background-color: red;
+    color:white;
 }
