@@ -1,28 +1,56 @@
 <%- include("partials/header.ejs") %>
 
-	<h2>Your score: <%= score %> / <%= quizList.length %></h2>
+<div class="main-container">
+	
+	<div class="detailResult-container">
+		<div class="score-container card">
+			<h2>Your score: <%= score %> / <%= quizList.length %></h2>
+		</div>
 
-	<h3>Detail result: </h3>
-	<% quizList.forEach((quiz) => { %>
-		<div>
-			<hr>
-			<h4><%= quiz.id %>. <%= quiz.question %></h4>
-			<% quiz.choices.forEach((choice) => { %>
-				<p <% if (choice == quiz.answer) { %>
-						class="answer"
-					<% } else if (quiz.isCorrect == false && choice == quiz.userAnswer) { %>
-						class="wrong"
-					<% } %> >
-
-					<%= choice %>
-				</p>
+		<div class="quiz-container">
+			<h3>Detail result: </h3>
+			<% quizList.forEach((quiz) => { %>
+				<div class="card quiz">
+					<form>
+						<div class="isCorrect-container">
+							<% if (quiz.isCorrect == true) { %>
+								✅
+							<% } else { %>
+								❌
+							<% } %>
+						</div>
+						<div class="quizContent-container">
+							<h4><%= quiz.id %>. <%= quiz.question %></h4>
+							<% var num = 0; %>
+							<% quiz.choices.forEach((choice) => { %>
+								<% num++; %>
+								<% if (choice == quiz.userAnswer) { %>			
+									<input class="choices" type="radio" id="<%= `choice${quiz.id}-${num}` %>" name="<%= `quiz${quiz.id}` %>" value="<%= choice %>" checked disabled>
+								<% } else { %> 
+									<input class="choices" type="radio" id="<%= `choice${quiz.id}-${num}` %>" name="<%= `quiz${quiz.id}` %>" value="<%= choice %>" disabled>
+								<% } %>
+								<label for="<%= `choice${quiz.id}-${num}` %>" 
+									<% if (choice == quiz.answer) { %>
+										class="answer"
+									<% } else if (quiz.isCorrect == false && choice == quiz.userAnswer) { %>
+										class="wrong"
+									<% } %> >
+										<%= choice %>
+								</label><br>
+							<% }) %>
+						</div>
+					</form>
+				</div>
 			<% }) %>
 		</div>
-	<% }) %>
 
-	<form action="/">
-		<h3>Would you like to give another go?</h3>
-		<input type="submit" value="Try again">
-	</form>
+		<div class="card btnContainer tryAgain-container">
+			<form action="/">
+				<h3>Would you like to give another go?</h3>
+				<input type="submit" value="Try again">
+			</form>
+		</div>
+	</div>
+</div>
 
 <%- include("partials/footer.ejs") %>

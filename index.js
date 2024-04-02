@@ -23,7 +23,7 @@ app.post("/chooseCategory", (req, res) => {
     quizIndex = 0;
     score = 0;
     categoryNum = req.body.category;
-    console.log(getCategoryName(categoryNum));
+    // console.log(getCategoryName(categoryNum));
     res.redirect("difficulty");
 });
 
@@ -33,8 +33,8 @@ app.get("/difficulty", (req, res) => {
 
 app.post("/setDifficulty", (req, res) => {
     var difficulty = req.body.difficulty;
-    console.log("difficulty: " + difficulty);
-    triviaAPI = `https://opentdb.com/api.php?amount=10&category=${categoryNum}&difficulty=${difficulty}&type=multiple`;
+    // console.log("difficulty: " + difficulty);
+    triviaAPI = `https://opentdb.com/api.php?amount=10&category=${categoryNum}&difficulty=${difficulty}`;
     res.redirect("getQuizData");
 });
 
@@ -42,7 +42,7 @@ app.get("/getQuizData", async (req, res) => {
     try {
         const response = await axios.get(triviaAPI);
         quizList = createQuizList(response.data.results);
-        console.log(quizList);
+        // console.log(quizList);
         res.redirect("/quiz");
     } catch (error) {
         res.status(500);
@@ -65,7 +65,7 @@ app.post("/answer", (req, res) => {
     var currentQuiz = quizList[quizIndex++];
     currentQuiz["userAnswer"] = userAnswer;
     currentQuiz["isCorrect"] = isCorrect;
-    console.log("currentQuiz.id:" + currentQuiz.id + ", userAnswer:" + userAnswer + ", isCorrect:" + currentQuiz.isCorrect);
+    // console.log("currentQuiz.id:" + currentQuiz.id + ", userAnswer:" + userAnswer + ", answer: " + currentQuiz.answer +  ", isCorrect:" + currentQuiz.isCorrect);
 
     if (isCorrect) {
         score++;
@@ -76,12 +76,12 @@ app.post("/answer", (req, res) => {
 });
 
 app.get("/result", (req, res) => {
-    console.log("score: " + score);
+    // console.log("score: " + score);
     res.render("result.ejs", { score: score, quizLength: quizList.length });
 });
 
 app.get("/detailResult", (req, res) => {
-    console.log(quizList);
+    // console.log(quizList);
     res.render("detailResult.ejs", { score: score, quizList: quizList });
 });
 
@@ -111,7 +111,8 @@ function createQuizList(rawQuizdata) {
 
 function createChoiceList(incorrect_answers_list, correct_answer_string) {
     var choiceList = incorrect_answers_list;
-    var randomIndex = Math.floor(Math.random() * 4);  // 0~3
+    var choiceLength = incorrect_answers_list.length + 1;
+    var randomIndex = Math.floor(Math.random() * choiceLength);
     choiceList.splice(randomIndex, 0, correct_answer_string);  // insert correct answer somewhere
     return choiceList;
 };

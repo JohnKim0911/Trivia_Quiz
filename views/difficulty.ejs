@@ -1,10 +1,14 @@
 <%- include("partials/header.ejs") %>
 		
 <h2>Choose difficulty</h2>
-<form action="/setDifficulty" method="post">
-	<button type="submit" name="difficulty" value="easy">Easy</button>
-	<button type="submit" name="difficulty" value="medium">Medium</button>
-	<button type="submit" name="difficulty" value="hard">Hard</button>
-</form>
+<div class="main-container difficulty-container">
+	<div class="card">
+		<form action="/setDifficulty" method="post">
+			<button type="submit" name="difficulty" value="easy" id="easyBtn">Easy</button>
+			<button type="submit" name="difficulty" value="medium" id="mediumBtn">Medium</button>
+			<button type="submit" name="difficulty" value="hard" id="hardBtn">Hard</button>
+		</form>
+	</div>
+</div>
 
 <%- include("partials/footer.ejs") %>

@@ -1,36 +1,42 @@
 <%- include("partials/header.ejs") %>
 		
 <h2>Choose category</h2>
-<form action="/chooseCategory" method="post">
-	<h3>General</h3>
-	<button type="submit" name="category" value="9">General Knowledge</button>
-	<button type="submit" name="category" value="20">Mythology</button>
-	<button type="submit" name="category" value="21">Sports</button>
-	<button type="submit" name="category" value="22">Geography</button>
-	<button type="submit" name="category" value="23">History</button>
-	<button type="submit" name="category" value="24">Politics</button>
-	<button type="submit" name="category" value="25">Art</button>
-	<button type="submit" name="category" value="26">Celebrities</button>
-	<button type="submit" name="category" value="27">Animals</button>
-	<button type="submit" name="category" value="28">Vehicles</button>
-
-	<h3>Science</h3>
-	<button type="submit" name="category" value="17">Science & Nature</button>
-	<button type="submit" name="category" value="18">Computers</button>
-	<button type="submit" name="category" value="19">Mathematics</button>
-	<button type="submit" name="category" value="30">Gadgets</button>
-
-	<h3>Entertainment</h3>
-	<button type="submit" name="category" value="10">Books</button>
-	<button type="submit" name="category" value="11">Film</button>
-	<button type="submit" name="category" value="12">Music</button>
-	<button type="submit" name="category" value="13">Musicals & Theatres</button>
-	<button type="submit" name="category" value="14">Television</button>
-	<button type="submit" name="category" value="15">Video Games</button>
-	<button type="submit" name="category" value="16">Board Games</button>
-	<button type="submit" name="category" value="29">Comics</button>
-	<button type="submit" name="category" value="31">Japanese Anime & Manga</button>
-	<button type="submit" name="category" value="32">Cartoon & Animations</button>
-</form>
+<div class="main-container category-container">
+	<form action="/chooseCategory" method="post" >
+		<div class="card">
+			<h3>General</h3>
+			<button type="submit" name="category" value="9">General Knowledge</button>
+			<button type="submit" name="category" value="20">Mythology</button>
+			<button type="submit" name="category" value="21">Sports</button>
+			<button type="submit" name="category" value="22">Geography</button>
+			<button type="submit" name="category" value="23">History</button>
+			<button type="submit" name="category" value="24">Politics</button>
+			<button type="submit" name="category" value="25">Art</button>
+			<button type="submit" name="category" value="26">Celebrities</button>
+			<button type="submit" name="category" value="27">Animals</button>
+			<button type="submit" name="category" value="28">Vehicles</button>
+		</div>
+		<div class="card">
+			<h3>Entertainment</h3>
+			<button type="submit" name="category" value="10">Books</button>
+			<button type="submit" name="category" value="11">Film</button>
+			<button type="submit" name="category" value="12">Music</button>
+			<button type="submit" name="category" value="13">Musicals & Theatres</button>
+			<button type="submit" name="category" value="14">Television</button>
+			<button type="submit" name="category" value="15">Video Games</button>
+			<button type="submit" name="category" value="16">Board Games</button>
+			<button type="submit" name="category" value="29">Comics</button>
+			<button type="submit" name="category" value="31">Japanese Anime & Manga</button>
+			<button type="submit" name="category" value="32">Cartoon & Animations</button>
+		</div>
+		<div class="card">
+			<h3>Science</h3>
+			<button type="submit" name="category" value="17">Science & Nature</button>
+			<button type="submit" name="category" value="18">Computers</button>
+			<button type="submit" name="category" value="19">Mathematics</button>
+			<button type="submit" name="category" value="30">Gadgets</button>
+		</div>
+	</form>
+</div>
 
 <%- include("partials/footer.ejs") %>

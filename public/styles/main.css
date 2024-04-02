@@ -1,13 +1,166 @@
-label {
+/* -------------------------- Common Element Selector -------------------------- */
+body {
+    font: 1em/1.618 Inter, sans-serif;
+    text-align: center;
+
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+
+    color: #224;
+    background:
+        url(../images/bgImg.jpg) center / cover no-repeat fixed;
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+}
+
+
+h1 a:visited {
+    color: #224;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: black;
+}
+
+hr {
+    width: 70%;
+    margin: 0 auto;
+}
+
+label,
+button:hover {
     cursor: pointer;
 }
 
-.answer {
+button,
+input {
+    padding: 5px;
+    margin: 3px 0;
+}
+
+footer p {
+    font-size: 10px;
+}
+
+/* -------------------------- Common Class Selector -------------------------- */
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    min-width: 180px;
+    max-width: 500px;
+
+    display: inline-flex;
+    flex-direction: column;
+
+    padding: 10px 20px;
+    margin: 20px 10px;
+
+    border: 1px solid rgba(255, 255, 255, .25);
+    border-radius: 20px;
+
+    background-color: rgba(255, 255, 255, 0.45);
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(15px);
+}
+
+/* -------------------------- Category/Difficulty page -------------------------- */
+.difficulty-container button {
+    padding: 50px;
+    margin: 10px;
+}
+
+/* -------------------------- Quiz page -------------------------- */
+.quiz {
+    text-align: left;
+}
+
+.choices {
+    margin-left: 20px;
+}
+
+.btnContainer {
+    text-align: center;
+}
+
+.btnContainer input {
+    padding: 10px 120px;
+    margin-top: 10px;
+}
+
+.quiz-card-footer {
+    text-align: center;
+    font-size: 0.65em;
+    color: #446;
+    margin-bottom: 0;
+}
+
+/* -------------------------- Answer page -------------------------- */
+.answer::after {
+    content: " 👈 Right answer";
     background-color: green;
     color: white;
 }
 
-.wrong {
+.wrong::after {
+    content: " 👈 Your choice";
     background-color: red;
-    color:white;
+    color: white;
+}
+
+.answerContainer {
+    margin-top: 10px;
+}
+
+/* -------------------------- Result page -------------------------- */
+.result-container input {
+    width: 200px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 10px;
+}
+
+/* -------------------------- Detail result page -------------------------- */
+.detailResult-container .score-container  {
+    width: 100%;
+}
+
+.detailResult-container .quiz-container .card {
+    display: flex;
+}
+
+.detailResult-container .wrapper {
+    width: 100%;
+}
+
+.detailResult-container .isCorrect-container {
+    float: left;
+    font-size: 4rem;
+    width: 90px;
+    margin-right: 0 10px 0 0;
+}
+
+.detailResult-container .quizContent-container {
+    float: left;
+    width: 400px;
+}
+
+.detailResult-container h4 {
+    margin: 0;
+}
+
+.detailResult-container .tryAgain-container {
+    width: 100%;
 }

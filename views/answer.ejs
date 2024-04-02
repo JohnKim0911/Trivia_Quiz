@@ -1,35 +1,41 @@
 <%- include("partials/header.ejs") %>
 
-<form action="/quiz">
-	<h2><%= quiz.id %>. <%= quiz.question %></h2>
+<div class="main-container">
+	<div class="card quiz">
+		<form action="/quiz" method="get">
+			<h3><%= quiz.id %>. <%= quiz.question %></h3>
+			<% var num = 0; %>
+			<% quiz.choices.forEach((choice) => { %>
+				<% num++; %>
+				<% if (choice == quiz.userAnswer) { %>			
+					<input class="choices" type="radio" id="<%= `choice${num}` %>" name="choice" value="<%= choice %>" checked disabled>
+				<% } else { %> 
+					<input class="choices" type="radio" id="<%= `choice${num}` %>" name="choice" value="<%= choice %>" disabled>
+				<% } %>
+				<label for="<%= `choice${num}` %>" 
+					<% if (choice == quiz.answer) { %>
+						class="answer"
+					<% } else if (locals.userAnswer && choice == userAnswer) { %>
+						class="wrong"
+					<% } %> >
+						<%= choice %>
+				</label><br>
+			<% })%>
 
-	<% quiz.choices.forEach((choice) => { %>
-		<p <% if (choice == quiz.answer) { %>
-				class="answer"
-			<% } else if (locals.userAnswer && choice == userAnswer) { %>
-				class="wrong"
-			<% } %> >
+			<div class="answerContainer">
+				<% if (isCorrect) { %>
+					<h2>You've got the right answer! 😁</h2>
+				<% } else { %>
+					<h2>Sorry. Wrong answer; 😓</h2>
+				<% } %>
+			</div>
 
-			<%= choice %>
-		</p>
-	<% }) %>
-
-	<% if (isCorrect) { %>
-		<h2>You've got the right answer! 😁</h2>
-	<% } else { %>
-		<h2>Sorry. Wrong answer; 😓</h2>
-	<% } %>
-
-	<br>
-	<input type="submit" value="Next">
-</form>
-
-<div>
-	<p>- <%= quiz.id %> out of <%= quizLength %> quizzes - </p>
+			<div class="btnContainer">
+				<input type="submit" value="Next">
+			</div>
+		</form>
+		<p class="quiz-card-footer">- <%= quiz.id %> / <%= quizLength %> - </p>
+	</div>
 </div>
 
 <%- include("partials/footer.ejs") %>
-
-<script>
-
-</script>

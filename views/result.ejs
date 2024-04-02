@@ -1,14 +1,17 @@
 <%- include("partials/header.ejs") %>
 
-	<h2>Your score: <%= score %> / <%= quizLength %></h2>
+<div class="main-container result-container">
+	<div class="card">
+		<h2>Your score: <%= score %> / <%= quizLength %></h2>
 
-	<form action="/">
-		<input type="submit" value="Try again">
-	</form>
-	
-	<form action="/detailResult">
-		<input type="submit" value="Detail result">
-	</form>
-	
+		<form action="/">
+			<input type="submit" value="Try again">
+		</form>
+		
+		<form action="/detailResult">
+			<input type="submit" value="Detail result">
+		</form>
+	</div>
+</div>
 
 <%- include("partials/footer.ejs") %>
